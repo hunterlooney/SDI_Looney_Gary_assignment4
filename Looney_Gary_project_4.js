@@ -83,18 +83,59 @@ var looneyLibrary = function () {
     	return fixedNumberOfDecimalPlaces
     };
 
+	//	7)Fuzzy-match a number: is the number above or below a 
+	//	number within a certain percent?
+
+
+
+	//	8)Find the number of hours or days difference between two dates.
+    var amountOfHoursBetweenDates = function (firstDate, secondDate) {
+        var hoursInDay = 24;
+        if (secondDate.getTime() === firstDate.getTime()){
+            return false;
+        } else {
+            var dateDifference = (secondDate.getDate() - firstDate.getDate())
+        };        
+        if (dateDifference !== 0) {
+             var hoursLeft = dateDifference * hoursInDay
+             var returnHour = hoursLeft + " hours";
+        } else {
+            var returnHour = " 0 hours";
+        };
+		return returnHour
+    };
+
+/*
+	//	9)Given a string version of a number such as "42", 
+	//	return the value as an actual Number, such as 42.
+
+	//	Array
+	//	10)Find the smallest value in an array that is greater 
+	//	than a given number
+
+	//	11)Find the total value of just the numbers in an array, 
+	//	even if some of the items are not numbers.
+
+
+	//	12)Given an array of objects and the name of a key, return the array 
+	//	sorted by the value of that key in each of the objects: 
+	//	"a" + [{a:2},{a:3},{a:1}] → [{a:1},{a:2},{a:3}].
+*/
     return {
         "isItAPhoneNumber": isItAPhoneNumber,
         "isItAnEmail": isItAnEmail,
         "isItAnURL": isItAnURL,
         "upperCaseTheWords": upperCaseTheWords,
         "changeTheSeperatorsInAString": changeTheSeperatorsInAString,
-        "numberCertainDecimalPlaces": numberCertainDecimalPlaces
+        "numberCertainDecimalPlaces": numberCertainDecimalPlaces,
+        
+        "amountOfHoursBetweenDates": amountOfHoursBetweenDates
     }; 
-
+ 
 };
 //Run My Library 
 var looneyLibRun = looneyLibrary();
+/*
 // 1. String follow Phone Number pattern //Call
 console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumber("777-888-9999"));  
 console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumber("77-888-9999"));  
@@ -104,56 +145,24 @@ console.log ("Is the email entered as a string a valid email pattern: " + looney
 // 3. String a URL? http: or https: //Call
 console.log ("Is the URL entered as a string a valid URL pattern: " + looneyLibRun.isItAnURL("http://www.hunterisawesome.edu"));
 console.log ("Is the URL entered as a string a valid URL pattern: " + looneyLibRun.isItAnURL("ht://www.hunterisawesome.edu"));
-// 4. Uppercase First Letter Of Each Word //like that sentence
+// 4. Uppercase First Letter Of Each Word //Call
 console.log ("The sentence\"if this works then each of the words will be uppercased!\": " + looneyLibRun.upperCaseTheWords("if this works then each of the words will be uppercased!"));
-// 5. Change separators in a string
+// 5. Change separators in a string //Call
 console.log ("Orginal: i/T/w/O/r/K/s/W/h/E/n/T/h/I/s/H/a/S/c/O/l/O/n/S Changed: " + looneyLibRun.changeTheSeperatorsInAString("/", "i/T/w/O/r/K/s/W/h/E/n/T/h/I/s/H/a/S/c/O/l/O/n/S", ":"));
-// 6. Format a number to use a specific number of decimal places
+// 6. Format a number to use a specific number of decimal places //Call
 console.log ("Original: 3.14159265359 Fixed: " + looneyLibRun.numberCertainDecimalPlaces(3, 3.14159265359));
-     
+*/
+// 7. Number within a certain percent //Call
 
+// 8. Find hours or days between two dates //Call
+console.log ("The amount of hours between the two dates: " + looneyLibRun.amountOfHoursBetweenDates(new Date(2013, 3, 28), new Date(2013, 4, 1)));
+// 9. Return number from string //Call
 
+//10. In Array find the smallest value greater than certain number //Call
 
+//11. Find total of numbers in array even if some aren't numbers //Call
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//7)Fuzzy-match a number: is the number above or below a 
-//number within a certain percent?
-
-//8)Find the number of hours or days difference between 
-//two dates.
-
-//9)Given a string version of a number such as "42", 
-//return the value as an actual Number, such as 42.
-
-
-//Array
-//10)Find the smallest value in an array that is greater 
-//than a given number
-
-//11)Find the total value of just the numbers in an array, 
-//even if some of the items are not numbers.
-
-//12)Given an array of objects and the name of a key, 
-//return the array sorted by the value of that key 
-//in each of the objects: 
-//"a" + [{a:2},{a:3},{a:1}] → [{a:1},{a:2},{a:3}].
-
-
-
-
+//12. Array of objects sort //Call
 
 
 //Make-up
