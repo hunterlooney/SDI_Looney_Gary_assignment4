@@ -48,14 +48,31 @@ var looneyLibrary = function () {
         }    
     };
 
+	//	4)Title-case a string (split into words, then 
+	//  uppercase the first letter of each word)
+
+    var upperCaseTheWords = function(inputSentence) {
+        var finishedSentence = [];
+        var wordSeperate = inputSentence.split(" ");
+        for (var i = 0; i < wordSeperate.length; i++){
+            var upperCase = wordSeperate[i].charAt(0),
+            	upperCaseWords = upperCase.toUpperCase(),
+           		lowerCase = wordSeperate[i].slice(1),
+            	lowerCaseWords = lowerCase.toLowerCase();
+            finishedSentence.push(upperCaseWords + lowerCaseWords);
+        };
+    	return finishedSentence.join(" ")
+    };
+ 
     return {
         "isItAPhoneNumber": isItAPhoneNumber,
         "isItAnEmail": isItAnEmail,
         "isItAnURL": isItAnURL,
-
+        "upperCaseTheWords": upperCaseTheWords
     }; 
 
 }
+
 //Run My Library 
 var looneyLibRun = looneyLibrary();
 
@@ -72,10 +89,10 @@ console.log ("Is the email entered as a string a valid email pattern: " + looney
 console.log ("Is the URL entered as a string a valid URL pattern: " + looneyLibRun.isItAnURL("http://www.hunterisawesome.edu"));
 console.log ("Is the URL entered as a string a valid URL pattern: " + looneyLibRun.isItAnURL("ht://www.hunterisawesome.edu"));
 
+// 4. Uppercase First Letter Of Each Word //like that sentence
+console.log ("The sentence\"if this works then each of the words will be uppercased!\": " + looneyLibRun.upperCaseTheWords("if this works then each of the words will be uppercased!"));
 
 
-//4)Title-case a string (split into words, then 
-//  uppercase the first letter of each word)
 
 //5)Given a string that is a list of things separated 
 //  by a given string, as well as another string separator,
