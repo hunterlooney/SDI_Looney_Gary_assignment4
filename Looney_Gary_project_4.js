@@ -105,9 +105,16 @@ var looneyLibrary = function () {
 		return returnHour
     };
 
-/*
 	//	9)Given a string version of a number such as "42", 
 	//	return the value as an actual Number, such as 42.
+    var numberFromString = function(stringNumber) {
+	    var outputNumber = Number(stringNumber)
+        if (isNaN(stringNumber)) { //Not A Number is very useful
+            return outputNumber = "Not a Number!"
+        } else {
+            return outputNumber
+        }
+    };
 
 	//	Array
 	//	10)Find the smallest value in an array that is greater 
@@ -116,11 +123,17 @@ var looneyLibrary = function () {
 	//	11)Find the total value of just the numbers in an array, 
 	//	even if some of the items are not numbers.
 
-
 	//	12)Given an array of objects and the name of a key, return the array 
 	//	sorted by the value of that key in each of the objects: 
 	//	"a" + [{a:2},{a:3},{a:1}] → [{a:1},{a:2},{a:3}].
-*/
+    var sortObjectsInArray = function(input, key) {
+        var actualSortingOfObjects = input
+        actualSortingOfObjects.sort(function(a, b) {
+            return a[key] - b[key];
+        });
+    	return actualSortingOfObjects
+    	};
+    
     return {
         "isItAPhoneNumber": isItAPhoneNumber,
         "isItAnEmail": isItAnEmail,
@@ -128,14 +141,16 @@ var looneyLibrary = function () {
         "upperCaseTheWords": upperCaseTheWords,
         "changeTheSeperatorsInAString": changeTheSeperatorsInAString,
         "numberCertainDecimalPlaces": numberCertainDecimalPlaces,
-        
-        "amountOfHoursBetweenDates": amountOfHoursBetweenDates
+        //7
+        "amountOfHoursBetweenDates": amountOfHoursBetweenDates,
+        "numberFromString": numberFromString,
+        //10
+        //11
+        "sortObjectsInArray": sortObjectsInArray
     }; 
- 
 };
 //Run My Library 
 var looneyLibRun = looneyLibrary();
-/*
 // 1. String follow Phone Number pattern //Call
 console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumber("777-888-9999"));  
 console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumber("77-888-9999"));  
@@ -150,19 +165,20 @@ console.log ("The sentence\"if this works then each of the words will be upperca
 // 5. Change separators in a string //Call
 console.log ("Orginal: i/T/w/O/r/K/s/W/h/E/n/T/h/I/s/H/a/S/c/O/l/O/n/S Changed: " + looneyLibRun.changeTheSeperatorsInAString("/", "i/T/w/O/r/K/s/W/h/E/n/T/h/I/s/H/a/S/c/O/l/O/n/S", ":"));
 // 6. Format a number to use a specific number of decimal places //Call
-console.log ("Original: 3.14159265359 Fixed: " + looneyLibRun.numberCertainDecimalPlaces(3, 3.14159265359));
-*/
+console.log (looneyLibRun.numberCertainDecimalPlaces(3, 3.14159265359));
 // 7. Number within a certain percent //Call
 
 // 8. Find hours or days between two dates //Call
-console.log ("The amount of hours between the two dates: " + looneyLibRun.amountOfHoursBetweenDates(new Date(2013, 3, 28), new Date(2013, 4, 1)));
+console.log (looneyLibRun.amountOfHoursBetweenDates(new Date(2013, 3, 28), new Date(2013, 4, 1)));
 // 9. Return number from string //Call
-
+console.log (looneyLibRun.numberFromString("72"));
 //10. In Array find the smallest value greater than certain number //Call
 
 //11. Find total of numbers in array even if some aren't numbers //Call
 
 //12. Array of objects sort //Call
+//Array sorter call
+console.log (looneyLibRun.sortObjectsInArray([{p:3}, {p:1}, {p:5}, {p:4}, {p:2}], "p"));
 
 
 //Make-up
