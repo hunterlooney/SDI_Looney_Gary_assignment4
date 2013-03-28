@@ -73,17 +73,26 @@ var looneyLibrary = function () {
     		putTheStringBackTogether = seperateTheString.join (newSeparator);
     	return putTheStringBackTogether;
     };
-     
+ 
+	//Number
+	//	6)Format a number to use a specific number of decimal 
+	//	places, as for money: 2.1 → 2.10
+	
+	var numberCertainDecimalPlaces = function (decimalPlaces, enteredNumber) {
+        var fixedNumberOfDecimalPlaces = enteredNumber.toFixed(decimalPlaces)
+    	return fixedNumberOfDecimalPlaces
+    };
+
     return {
         "isItAPhoneNumber": isItAPhoneNumber,
         "isItAnEmail": isItAnEmail,
         "isItAnURL": isItAnURL,
         "upperCaseTheWords": upperCaseTheWords,
-        "changeTheSeperatorsInAString": changeTheSeperatorsInAString
+        "changeTheSeperatorsInAString": changeTheSeperatorsInAString,
+        "numberCertainDecimalPlaces": numberCertainDecimalPlaces
     }; 
 
 };
-
 //Run My Library 
 var looneyLibRun = looneyLibrary();
 // 1. String follow Phone Number pattern //Call
@@ -99,6 +108,9 @@ console.log ("Is the URL entered as a string a valid URL pattern: " + looneyLibR
 console.log ("The sentence\"if this works then each of the words will be uppercased!\": " + looneyLibRun.upperCaseTheWords("if this works then each of the words will be uppercased!"));
 // 5. Change separators in a string
 console.log ("Orginal: i/T/w/O/r/K/s/W/h/E/n/T/h/I/s/H/a/S/c/O/l/O/n/S Changed: " + looneyLibRun.changeTheSeperatorsInAString("/", "i/T/w/O/r/K/s/W/h/E/n/T/h/I/s/H/a/S/c/O/l/O/n/S", ":"));
+// 6. Format a number to use a specific number of decimal places
+console.log ("Original: 3.14159265359 Fixed: " + looneyLibRun.numberCertainDecimalPlaces(3, 3.14159265359));
+     
 
 
 
@@ -116,11 +128,6 @@ console.log ("Orginal: i/T/w/O/r/K/s/W/h/E/n/T/h/I/s/H/a/S/c/O/l/O/n/S Changed: 
 
 
 
-
-
-//Number
-//6)Format a number to use a specific number of decimal 
-//places, as for money: 2.1 → 2.10
 
 //7)Fuzzy-match a number: is the number above or below a 
 //number within a certain percent?
