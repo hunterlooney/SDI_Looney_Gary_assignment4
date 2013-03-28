@@ -61,67 +61,85 @@ var looneyLibrary = function () {
             	lowerCaseWords = lowerCase.toLowerCase();
             finishedSentence.push(upperCaseWords + lowerCaseWords);
         };
-    	return finishedSentence.join(" ")
+    	return finishedSentence.join(" ");
     };
  
+	//	5)Given a string that is a list of things separated 
+	// 		 by a given string, as well as another string separator,
+	// 		 return a string with the first separator changed to 
+	// 		 the second: "a,b,c" + "," + "/" → "a/b/c".
+    var changeTheSeperatorsInAString = function (currentSeparator, inputedString, newSeparator) {
+		var seperateTheString = inputedString.split(currentSeparator),
+    		putTheStringBackTogether = seperateTheString.join (newSeparator);
+    	return putTheStringBackTogether;
+    };
+     
     return {
         "isItAPhoneNumber": isItAPhoneNumber,
         "isItAnEmail": isItAnEmail,
         "isItAnURL": isItAnURL,
-        "upperCaseTheWords": upperCaseTheWords
+        "upperCaseTheWords": upperCaseTheWords,
+        "changeTheSeperatorsInAString": changeTheSeperatorsInAString
     }; 
 
-}
+};
 
 //Run My Library 
 var looneyLibRun = looneyLibrary();
-
 // 1. String follow Phone Number pattern //Call
 console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumber("777-888-9999"));  
 console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumber("77-888-9999"));  
-
-
 // 2. String follow Email pattern //Call
 console.log ("Is the email entered as a string a valid email pattern: " + looneyLibRun.isItAnEmail("hunterlooney72@yahoo.com"));
 console.log ("Is the email entered as a string a valid email pattern: " + looneyLibRun.isItAnEmail("@.edu"));
-
-// 3. String a URL? http: or https:
+// 3. String a URL? http: or https: //Call
 console.log ("Is the URL entered as a string a valid URL pattern: " + looneyLibRun.isItAnURL("http://www.hunterisawesome.edu"));
 console.log ("Is the URL entered as a string a valid URL pattern: " + looneyLibRun.isItAnURL("ht://www.hunterisawesome.edu"));
-
 // 4. Uppercase First Letter Of Each Word //like that sentence
 console.log ("The sentence\"if this works then each of the words will be uppercased!\": " + looneyLibRun.upperCaseTheWords("if this works then each of the words will be uppercased!"));
+// 5. Change separators in a string
+console.log ("Orginal: i/T/w/O/r/K/s/W/h/E/n/T/h/I/s/H/a/S/c/O/l/O/n/S Changed: " + looneyLibRun.changeTheSeperatorsInAString("/", "i/T/w/O/r/K/s/W/h/E/n/T/h/I/s/H/a/S/c/O/l/O/n/S", ":"));
 
 
 
-//5)Given a string that is a list of things separated 
-//  by a given string, as well as another string separator,
-//  return a string with the first separator changed to 
-//  the second: "a,b,c" + "," + "/" → "a/b/c".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Number
-//1)Format a number to use a specific number of decimal 
+//6)Format a number to use a specific number of decimal 
 //places, as for money: 2.1 → 2.10
 
-//2)Fuzzy-match a number: is the number above or below a 
+//7)Fuzzy-match a number: is the number above or below a 
 //number within a certain percent?
 
-//3)Find the number of hours or days difference between 
+//8)Find the number of hours or days difference between 
 //two dates.
 
-//4)Given a string version of a number such as "42", 
+//9)Given a string version of a number such as "42", 
 //return the value as an actual Number, such as 42.
 
 
 //Array
-//1)Find the smallest value in an array that is greater 
+//10)Find the smallest value in an array that is greater 
 //than a given number
 
-//2)Find the total value of just the numbers in an array, 
+//11)Find the total value of just the numbers in an array, 
 //even if some of the items are not numbers.
 
-//3)Given an array of objects and the name of a key, 
+//12)Given an array of objects and the name of a key, 
 //return the array sorted by the value of that key 
 //in each of the objects: 
 //"a" + [{a:2},{a:3},{a:1}] → [{a:1},{a:2},{a:3}].
