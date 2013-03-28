@@ -3,12 +3,10 @@
 
 
 
-var looneyLibrary = function () {
-
-
-//String
-//1)Does a string follow a 123-456-7890 pattern like a 
-//  phone number?
+var looneyLibrary = function () {	
+	//	String Section
+	//	1)Does a string follow a 123-456-7890 pattern like a 
+	//  phone number?
 	var isItAPhoneNumber = function (num) {
 		var thisIsAPhoneNumberFormat = "012-456-8901"
 		if (num.length === thisIsAPhoneNumberFormat.length && num.charAt(3) === "-" && num.charAt(7) === "-") {
@@ -18,24 +16,39 @@ var looneyLibrary = function () {
 			return false
 		}
 	};
+	//	2)Does a string follow an aaa@bbb.ccc pattern like 
+	//  an email address?
+    var isItAnEmail = function (testEmail) {
+        var testEmailLength = testEmail.length
+            if (testEmail.indexOf("@") == 0, 
+            	testEmail.indexOf("@") == -1, 
+            	testEmail.indexOf("@") !== testEmail.lastIndexOf("@"), 
+            	testEmail.indexOf("@") === testEmailLength - 1, 
+            	testEmail.lastIndexOf(".") === testEmailLength -2,  
+            	testEmail.lastIndexOf(".") == -1, 
+            	testEmail.lastIndexOf(".") === testEmailLength -1, 
+            	testEmail.indexOf("@") === testEmail.lastIndexOf(".") -1, 
+            	testEmail.indexOf("@") === testEmail.indexOf(".") -1) { //I think this is all I should test
+                	return false
+            } else {
+                	return true
+            }
+    };
 
-	return {
+    return {
         "isItAPhoneNumber": isItAPhoneNumber,
+        "isItAnEmail": isItAnEmail
     }; 
-
-//2)Does a string follow an aaa@bbb.ccc pattern like 
-//  an email address?
-
-
-
-
-
 }
-//Run Library 
+//Run My Library 
 var looneyLibRun = looneyLibrary();
 
-// 1. String Phone Number Check Call 
+// 1. String follow Phone Number pattern //Call
 console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumber("777-888-9999"));  
+
+// 2. String follow Email pattern //Call
+console.log ("Is the email entered as a string a valid email pattern: " + looneyLibRun.isItAnEmail("hunterlooney72@yahoo.com"));
+console.log ("Is the email entered as a string a valid email pattern: " + looneyLibRun.isItAnEmail("@.edu"));
 
 
 
