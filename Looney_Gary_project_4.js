@@ -1,39 +1,44 @@
 //Gary W. Hunter Looney
 //SDI Project 4
 
+
+
+var looneyLibrary = function () {
+
+
 //String
 //1)Does a string follow a 123-456-7890 pattern like a 
 //  phone number?
-
-console.log("Please input your phone number in XXX-XXX-XXXX format.");
-
-var isItAPhoneNumber = function (phoneNumberInQuestion) {
-	if (phoneNumberInQuestion.charAt(3) = "-") {
-		if (phoneNumberInQuestion.charAt(8) = "-") {
-			console.log("The number inputed is in the right format.");
+	var isItAPhoneNumber = function (num) {
+		var thisIsAPhoneNumberFormat = "012-456-8901"
+		if (num.length === thisIsAPhoneNumberFormat.length && num.charAt(3) === "-" && num.charAt(7) === "-") {
+			return true
 		} else {
 			console.log("The number inputed is not in the right format.");
-		} 
-	} else {
-		console.log("The number inputed is not in the right format.");
-	}
-}
+			return false
+		}
+	};
 
-isItAPhoneNumber("012-567-9012");
-
-
-
-
-
-
-
-
-
-
-
+	return {
+        "isItAPhoneNumber": isItAPhoneNumber,
+    }; 
 
 //2)Does a string follow an aaa@bbb.ccc pattern like 
 //  an email address?
+
+
+
+
+
+}
+//Run Library 
+var looneyLibRun = looneyLibrary();
+
+// 1. String Phone Number Check Call 
+console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumber("777-888-9999"));  
+
+
+
 
 //3)Is the string a URL? (Does it start with http: or 
 //  https:?)
@@ -78,26 +83,6 @@ isItAPhoneNumber("012-567-9012");
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Make-up
 /*
 // You may use this assignment to make up some of what you 
@@ -128,30 +113,6 @@ isItAPhoneNumber("012-567-9012");
 // points back. But it's an opportunity to make up 75% of 
 // what you lost.
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //Practices
 //Logic and Sequence
