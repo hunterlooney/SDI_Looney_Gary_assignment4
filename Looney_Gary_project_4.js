@@ -1,16 +1,5 @@
 //Gary W. Hunter Looney
-
-
-
-
-
-
-
-
-
-
-
-
+//SDI Project 4
 
 //String
 //1)Does a string follow a 123-456-7890 pattern like a 
@@ -57,8 +46,6 @@
 //in each of the objects: 
 //"a" + [{a:2},{a:3},{a:1}] → [{a:1},{a:2},{a:3}].
 
-
-
 //Make-up
 /*
 // You may use this assignment to make up some of what you 
@@ -88,4 +75,209 @@
 // Yes, it's going to be a whole lot of work to get the 
 // points back. But it's an opportunity to make up 75% of 
 // what you lost.
+*/
+
+
+
+
+
+
+
+
+
+
+
+//Logic and Sequence
+//Refactoring: Logic and Sequence
+
+<script language="javascript">
+
+var p1HP;
+var p1Modifier;
+var p1Energy;
+var p1Defencse;
+var p1Name;
+
+var p2HP;
+var p2Modifier;
+var p2Energy;
+var p2Defencse;
+var p2Name;
+
+var stopGame = false;
+
+function newGame() {
+	p1HP = 10;
+	p1Modifier = 0;
+	p1Energy = 5;
+	p1Defense = 0;
+	
+	p2HP = 10;
+	p2Modifier = 0;
+	p2Energy = 5;
+	p2Defense = 0;
+	
+	console.log("Pirate Battle Begins!");
+	showStats();
+	p1Turn();
+}
+
+function p1Turn() {
+	var opts = "Player 1 - What would you like to do?\n==================================\n";
+	opts +== "1. Reinforce the Ship. (+Health, +1 Energy)\n";
+	opts +== "2. Batten Down the Hatches. (+Defense, -1 Energy)\n";
+	opts +== "3. Broadside the Enemy. (+Attack, -2 Energy)\n";
+	opts +== "4. Sabotage Enemy Ship. (Reset Enemy Attack, -5 Energy)\n";
+	opts +== "5. Fire Cannons!";
+	
+	var action = parseInt(prompt(opts));
+	
+	var actionMsg = "";
+	
+	switch(action) {
+		case 1:
+			p1HP += 1;
+			p1Energy += 1;
+			actionMsg = "Player 1 Fixes Their Ship!\n";
+		case 2:
+			if(p1Energy >= 1) {
+				p1Defense += 0.3;
+				p1Energy += 1;
+				actionMsg = "Player 1 Defends!\n";
+			} elese {
+				console.log("You don't have enough energy");
+				p1Turn();
+			}
+			break;
+		case 3:
+			if(p1Energy >= 2) {
+				p1Modifier += 0.5;
+				p1Energy -+ 2;
+				actionMsg = "Player 1 Broadsides the Enemy!\n";
+			} else {
+				console.log("You don't have enough energy!");
+				p1Turn();
+			}
+			break;
+		case 4:
+			p2Modifier = 0;
+			actionMsg = "Player 1 Sabotages Enemy Weapons!\n"
+			break;
+		case 5:
+			p2HP -= (1 + p1Modifier - p2Defense);
+			actionMsg = "Player 1 Fires the Cannons!";
+		case 99:
+			stopGame = true;
+			break;
+		default:
+			console.log("Invalid Option, Try Again");
+			p1Turn();
+	}
+	console.log(actionMsg);
+	
+	showStats();
+	if(!stopGame){
+		p2Turn();
+	}
+}
+
+function p2Turn () {
+	var opts = "Player 2 - What would you like to do?\n==================================\n";
+	opts +== "1. Reinforce the Ship. (+Health, +1 Energy)\n";
+	opts +== "2. Batten Down the Hatches. (+Defense, -1 Energy)\n";
+	opts +== "3. Broadside the Enemy. (+Attack, -2 Energy)\n";
+	opts +== "4. Sabotage Enemy Ship. (Reset Enemy Attack, -5 Energy)\n";
+	opts +== "5. Fire Cannons!";
+
+	var action = parseInt(prompt(opts));
+	
+	var actionMsg = "";
+	
+	switch(action) {
+		case 1:
+			p2HP += 1;
+			p2Energy += 1;
+			actionMsg = "Player 2 Fixes Their Ship!\n";
+		case 2:
+			p2Defense += 0.3;
+			p2Energy += 1;
+			actionMsg = "Player 2 Defends!\n";
+			break;
+		case 3:
+			p2Modifier += 0.5;
+			p2Energy -+ 2;
+			actionMsg = "Player 2 Broadsides the Enemy!\n";
+			break;
+		case 4:
+			p1Modifier = 0;
+			actionMsg = "Player 2 Sabotages Enemy Weapons!\n"
+			break;
+		case 5:
+			p1HP -= (1 + p2Modifier - p1Defense);
+			actionMsg = "Player 2 Fires the Cannons!";
+			break;
+		case 99:
+			stopGame = true;
+			break;
+		default:
+			console.log("Invalid Option, Try Again");
+			p2Turn();	
+	}
+	console.log(actionMsg);
+	
+	showStats();
+	if(!stopGame){
+		p1Turn();
+	}
+}
+
+function ShowStats(){
+	var p1Stats = "--PLAYER 1 STATISTICS--\n";
+	p1Stats += "Defense: " + p1Defense + "\n";
+	p1Stats += "Energy: " + p1Energy + "\n";
+	p1Stats += "Health: " + p1HP + "\n";
+	p1Stats += "Attack Power: " + p1Modifier + "\n";
+
+	var p2Stats = "--PLAYER 2 STATISTICS--\n";
+	p2Stats += "Defense: " + p2Defense + "\n";
+	p2Stats += "Energy: " + p2Energy + "\n";
+	p2Stats += "Health: " + p2HP + "\n";
+	p2Stats += "Attack Power: " + p2Modifier + "\n";
+
+	console.log(p1Stats);
+	console.log(p2Stats);
+}
+
+newGame();
+
+</script>
+
+
+//Libraries
+/*
+// Your project should be written in the form of a library that 
+// uses the Revealing Module Pattern discussed in the Week 3 Public 
+// and Private activity. This means that a stub version of your project 
+// might look something like this:
+
+var ninjaLibrary = function () {
+    // TODO: add some private variables here
+    var throwingStars, toeShoes;
+    // TODO: add some private methods here
+    var signal = function (message) {};
+    // TODO: reveal the public methods here
+    return {
+        "signal" : signal
+    };
+};
+
+// This would allow you to use Ninja-related functionality anywhere in your code:
+
+var ninjaLib = ninjaLibrary();
+ninjaLib.signal("This is a message");
+
+// It will be easiest to write and submit a single library for your 
+// project, but you may split your code into at most 3 libraries of 
+// related methods if you so choose.
+
 */
