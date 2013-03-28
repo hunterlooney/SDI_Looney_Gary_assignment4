@@ -5,6 +5,33 @@
 //1)Does a string follow a 123-456-7890 pattern like a 
 //  phone number?
 
+console.log("Please input your phone number in XXX-XXX-XXXX format.");
+
+var isItAPhoneNumber = function (phoneNumberInQuestion) {
+	if (phoneNumberInQuestion.charAt(3) = "-") {
+		if (phoneNumberInQuestion.charAt(8) = "-") {
+			console.log("The number inputed is in the right format.");
+		} else {
+			console.log("The number inputed is not in the right format.");
+		} 
+	} else {
+		console.log("The number inputed is not in the right format.");
+	}
+}
+
+isItAPhoneNumber("012-567-9012");
+
+
+
+
+
+
+
+
+
+
+
+
 //2)Does a string follow an aaa@bbb.ccc pattern like 
 //  an email address?
 
