@@ -15,6 +15,27 @@ var looneyLibrary = function () {
 			return false
 		}
 	};
+	
+	//I created isItAPhoneNumberOther after I learned isNaN. So this is probably more right.
+	var isItAPhoneNumberOther = function(num) {
+	    if (num.length !== 12) {return false};
+	    if (isNaN(num.charAt(0))) {return false};
+	    if (isNaN(num.charAt(1))) {return false};
+	    if (isNaN(num.charAt(2))) {return false};
+	    if (num.charAt(3) != "-") {return false};
+	    if (isNaN(num.charAt(4))) {return false};
+	    if (isNaN(num.charAt(5))) {return false};
+	    if (isNaN(num.charAt(6))) {return false};
+    	if (num.charAt(7) != "-") {return false};
+    	if (isNaN(num.charAt(8))) {return false};
+    	if (isNaN(num.charAt(9))) {return false};
+    	if (isNaN(num.charAt(10))) {return false};
+	    if (isNaN(num.charAt(11))) {return false};
+  	  return true
+	};
+	
+	
+	
 	//	2)Does a string follow an aaa@bbb.ccc pattern like 
 	//  an email address?
     var isItAnEmail = function (testEmail) {
@@ -136,6 +157,7 @@ var looneyLibrary = function () {
     
     return {
         "isItAPhoneNumber": isItAPhoneNumber,
+        "isItAPhoneNumberOther": isItAPhoneNumberOther,
         "isItAnEmail": isItAnEmail,
         "isItAnURL": isItAnURL,
         "upperCaseTheWords": upperCaseTheWords,
@@ -153,7 +175,9 @@ var looneyLibrary = function () {
 var looneyLibRun = looneyLibrary();
 // 1. String follow Phone Number pattern //Call
 console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumber("777-888-9999"));  
-console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumber("77-888-9999"));  
+console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumber("77-888-9999"));
+console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumberOther("777-888-9999"));  
+console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumberOther("77-888-9999"));   
 // 2. String follow Email pattern //Call
 console.log ("Is the email entered as a string a valid email pattern: " + looneyLibRun.isItAnEmail("hunterlooney72@yahoo.com"));
 console.log ("Is the email entered as a string a valid email pattern: " + looneyLibRun.isItAnEmail("@.edu"));
