@@ -12,7 +12,6 @@ var looneyLibrary = function () {
 		if (num.length === thisIsAPhoneNumberFormat.length && num.charAt(3) === "-" && num.charAt(7) === "-") {
 			return true
 		} else {
-			console.log("The number inputed is not in the right format.");
 			return false
 		}
 	};
@@ -35,26 +34,45 @@ var looneyLibrary = function () {
             }
     };
 
+	//	3)Is the string a URL? (Does it start with http: or 
+	//  https:?)
+
+    var isItAnURL = function (testURL)  {
+        var urlHTTPScheck = testURL.slice(0,8)
+        var urlHTTPcheck = testURL.slice(0,7)
+        if (urlHTTPScheck.contains("https://"), 
+        	urlHTTPcheck.contains("http://")) {
+            return true;
+        } else {
+            return false;
+        }    
+    };
+
     return {
         "isItAPhoneNumber": isItAPhoneNumber,
-        "isItAnEmail": isItAnEmail
+        "isItAnEmail": isItAnEmail,
+        "isItAnURL": isItAnURL,
+
     }; 
+
 }
 //Run My Library 
 var looneyLibRun = looneyLibrary();
 
 // 1. String follow Phone Number pattern //Call
 console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumber("777-888-9999"));  
+console.log ("Is the phone number entered as a string a valid phone number pattern: " + looneyLibRun.isItAPhoneNumber("77-888-9999"));  
+
 
 // 2. String follow Email pattern //Call
 console.log ("Is the email entered as a string a valid email pattern: " + looneyLibRun.isItAnEmail("hunterlooney72@yahoo.com"));
 console.log ("Is the email entered as a string a valid email pattern: " + looneyLibRun.isItAnEmail("@.edu"));
 
+// 3. String a URL? http: or https:
+console.log ("Is the URL entered as a string a valid URL pattern: " + looneyLibRun.isItAnURL("http://www.hunterisawesome.edu"));
+console.log ("Is the URL entered as a string a valid URL pattern: " + looneyLibRun.isItAnURL("ht://www.hunterisawesome.edu"));
 
 
-
-//3)Is the string a URL? (Does it start with http: or 
-//  https:?)
 
 //4)Title-case a string (split into words, then 
 //  uppercase the first letter of each word)
