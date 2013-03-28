@@ -46,6 +46,31 @@
 //in each of the objects: 
 //"a" + [{a:2},{a:3},{a:1}] → [{a:1},{a:2},{a:3}].
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Make-up
 /*
 // You may use this assignment to make up some of what you 
@@ -87,10 +112,25 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Practices
 //Logic and Sequence
 //Refactoring: Logic and Sequence
-
-<script language="javascript">
+/*
+//<script language="javascript">
 
 var p1HP;
 var p1Modifier;
@@ -251,8 +291,169 @@ function ShowStats(){
 newGame();
 
 </script>
+*/
+//Logic and Sequence
+//Refactoring: Variables and Scope
+/*
+//<script language="javascript">
+
+var stopGame = false;
+
+function PlayerClass(){
+	this.hp = 10;
+	this.modifier = 0;
+	this.energy = 5;
+	this.defense = 0;
+	this.name = "";
+}
 
 
+function newGame() {
+	
+	var player1 = new PlayerClass();
+	player1.name = "Captain Hook";
+	var player2 = new PlayerClass();	
+	player2.name = "Blackbeard";
+
+	console.log("Pirate Battle Begins!");
+
+	console.log(player1);
+	console.log(player2);
+
+	showStats();
+	p1Turn();
+}
+
+function p1Turn() {
+	var opts = "Player 1 - What would you like to do?\n==================================\n";
+	opts +== "1. Reinforce the Ship. (+Health, +1 Energy)\n";
+	opts +== "2. Batten Down the Hatches. (+Defense, -1 Energy)\n";
+	opts +== "3. Broadside the Enemy. (+Attack, -2 Energy)\n";
+	opts +== "4. Sabotage Enemy Ship. (Reset Enemy Attack, -5 Energy)\n";
+	opts +== "5. Fire Cannons!";
+	
+	var action = parseInt(prompt(opts));
+	
+	var actionMsg = "";
+	
+	switch(action) {
+		case 1:
+			p1HP += 1;
+			p1Energy += 1;
+			actionMsg = "Player 1 Fixes Their Ship!\n";
+		case 2:
+			if(p1Energy >= 1) {
+				p1Defense += 0.3;
+				p1Energy += 1;
+				actionMsg = "Player 1 Defends!\n";
+			} elese {
+				console.log("You don't have enough energy");
+				p1Turn();
+			}
+			break;
+		case 3:
+			if(p1Energy >= 2) {
+				p1Modifier += 0.5;
+				p1Energy -+ 2;
+				actionMsg = "Player 1 Broadsides the Enemy!\n";
+			} else {
+				console.log("You don't have enough energy!");
+				p1Turn();
+			}
+			break;
+		case 4:
+			p2Modifier = 0;
+			actionMsg = "Player 1 Sabotages Enemy Weapons!\n"
+			break;
+		case 5:
+			p2HP -= (1 + p1Modifier - p2Defense);
+			actionMsg = "Player 1 Fires the Cannons!";
+		case 99:
+			stopGame = true;
+			break;
+		default:
+			console.log("Invalid Option, Try Again");
+			p1Turn();
+	}
+	console.log(actionMsg);
+	
+	showStats();
+	if(!stopGame){
+		p2Turn();
+	}
+}
+
+function p2Turn () {
+	var opts = "Player 2 - What would you like to do?\n==================================\n";
+	opts +== "1. Reinforce the Ship. (+Health, +1 Energy)\n";
+	opts +== "2. Batten Down the Hatches. (+Defense, -1 Energy)\n";
+	opts +== "3. Broadside the Enemy. (+Attack, -2 Energy)\n";
+	opts +== "4. Sabotage Enemy Ship. (Reset Enemy Attack, -5 Energy)\n";
+	opts +== "5. Fire Cannons!";
+
+	var action = parseInt(prompt(opts));
+	
+	var actionMsg = "";
+	
+	switch(action) {
+		case 1:
+			p2HP += 1;
+			p2Energy += 1;
+			actionMsg = "Player 2 Fixes Their Ship!\n";
+		case 2:
+			p2Defense += 0.3;
+			p2Energy += 1;
+			actionMsg = "Player 2 Defends!\n";
+			break;
+		case 3:
+			p2Modifier += 0.5;
+			p2Energy -+ 2;
+			actionMsg = "Player 2 Broadsides the Enemy!\n";
+			break;
+		case 4:
+			p1Modifier = 0;
+			actionMsg = "Player 2 Sabotages Enemy Weapons!\n"
+			break;
+		case 5:
+			p1HP -= (1 + p2Modifier - p1Defense);
+			actionMsg = "Player 2 Fires the Cannons!";
+			break;
+		case 99:
+			stopGame = true;
+			break;
+		default:
+			console.log("Invalid Option, Try Again");
+			p2Turn();	
+	}
+	console.log(actionMsg);
+	
+	showStats();
+	if(!stopGame){
+		p1Turn();
+	}
+}
+
+function ShowStats(){
+	var p1Stats = "--PLAYER 1 STATISTICS--\n";
+	p1Stats += "Defense: " + p1Defense + "\n";
+	p1Stats += "Energy: " + p1Energy + "\n";
+	p1Stats += "Health: " + p1HP + "\n";
+	p1Stats += "Attack Power: " + p1Modifier + "\n";
+
+	var p2Stats = "--PLAYER 2 STATISTICS--\n";
+	p2Stats += "Defense: " + p2Defense + "\n";
+	p2Stats += "Energy: " + p2Energy + "\n";
+	p2Stats += "Health: " + p2HP + "\n";
+	p2Stats += "Attack Power: " + p2Modifier + "\n";
+
+	console.log(p1Stats);
+	console.log(p2Stats);
+}
+
+newGame();
+
+</script>
+*/
 //Libraries
 /*
 // Your project should be written in the form of a library that 
