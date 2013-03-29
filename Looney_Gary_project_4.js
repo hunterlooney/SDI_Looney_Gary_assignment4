@@ -4,6 +4,7 @@
 
 
 var looneyLibrary = function () {	
+
 	//	String Section
 	//	1)Does a string follow a 123-456-7890 pattern like a 
 	//  phone number?
@@ -15,7 +16,6 @@ var looneyLibrary = function () {
 			return false
 		}
 	};
-	
 	//I created isItAPhoneNumberOther after I learned isNaN. So this is probably more right.
 	var isItAPhoneNumberOther = function(num) {
 	    if (num.length !== 12) {return false};
@@ -33,9 +33,7 @@ var looneyLibrary = function () {
 	    if (isNaN(num.charAt(11))) {return false};
   	  return true
 	};
-	
-	
-	
+
 	//	2)Does a string follow an aaa@bbb.ccc pattern like 
 	//  an email address?
     var isItAnEmail = function (testEmail) {
@@ -57,7 +55,6 @@ var looneyLibrary = function () {
 
 	//	3)Is the string a URL? (Does it start with http: or 
 	//  https:?)
-
     var isItAnURL = function (testURL)  {
         var urlHTTPScheck = testURL.slice(0,8)
         var urlHTTPcheck = testURL.slice(0,7)
@@ -71,7 +68,6 @@ var looneyLibrary = function () {
 
 	//	4)Title-case a string (split into words, then 
 	//  uppercase the first letter of each word)
-
     var upperCaseTheWords = function(inputSentence) {
         var finishedSentence = [];
         var wordSeperate = inputSentence.split(" ");
@@ -98,7 +94,6 @@ var looneyLibrary = function () {
 	//Number
 	//	6)Format a number to use a specific number of decimal 
 	//	places, as for money: 2.1 → 2.10
-	
 	var numberCertainDecimalPlaces = function (decimalPlaces, enteredNumber) {
         var fixedNumberOfDecimalPlaces = enteredNumber.toFixed(decimalPlaces)
     	return fixedNumberOfDecimalPlaces
@@ -106,8 +101,22 @@ var looneyLibrary = function () {
 
 	//	7)Fuzzy-match a number: is the number above or below a 
 	//	number within a certain percent?
-
-
+	var percentANumberIsBelowOrAboveAnotherNumber = function(firstNumber, secondNumber, numberPercent) {
+		var compareNumber = (firstNumber / secondNumber)
+		if (numberPercent > 1) {
+			if (((numberPercent / 100) - compareNumber) > 0) {
+			return true
+			} else {
+			return false
+			}
+		} else {
+			if ((numberPercent - compareNumber) > 0) {
+			return true
+			} else {
+			return false
+			}
+		};
+	};
 
 	//	8)Find the number of hours or days difference between two dates.
     var amountOfHoursBetweenDates = function (firstDate, secondDate) {
@@ -140,9 +149,22 @@ var looneyLibrary = function () {
 	//	Array
 	//	10)Find the smallest value in an array that is greater 
 	//	than a given number
+	var findSmallValueInArray = function(arraySearch, givenNumber) {
+    	for (var i=0; i < arraySearch.length; i++) { 
+    	} 
+	};
 
 	//	11)Find the total value of just the numbers in an array, 
 	//	even if some of the items are not numbers.
+	var sumOfArrayEvenWithNonNumbers = function(sumArray) {
+  	  var sumArrayWork = 0;
+  	  for (var i = 0; i < sumArray.length; i++) {
+  	      if (typeof sumArray[i] == "number") {
+  	          sumArrayWork += sumArray[i];
+   	     }
+  	  }
+  	  return sumArrayWork
+	}; 	
 
 	//	12)Given an array of objects and the name of a key, return the array 
 	//	sorted by the value of that key in each of the objects: 
@@ -163,11 +185,11 @@ var looneyLibrary = function () {
         "upperCaseTheWords": upperCaseTheWords,
         "changeTheSeperatorsInAString": changeTheSeperatorsInAString,
         "numberCertainDecimalPlaces": numberCertainDecimalPlaces,
-        //7
+        "percentANumberIsBelowOrAboveAnotherNumber": percentANumberIsBelowOrAboveAnotherNumber,
         "amountOfHoursBetweenDates": amountOfHoursBetweenDates,
         "numberFromString": numberFromString,
-        //10
-        //11
+        "findSmallValueInArray": findSmallValueInArray,
+       	"sumOfArrayEvenWithNonNumbers": sumOfArrayEvenWithNonNumbers,
         "sortObjectsInArray": sortObjectsInArray
     }; 
 };
@@ -191,18 +213,26 @@ console.log ("Orginal: i/T/w/O/r/K/s/W/h/E/n/T/h/I/s/H/a/S/c/O/l/O/n/S Changed: 
 // 6. Format a number to use a specific number of decimal places //Call
 console.log (looneyLibRun.numberCertainDecimalPlaces(3, 3.14159265359));
 // 7. Number within a certain percent //Call
-
+console.log(looneyLibRun.percentANumberIsBelowOrAboveAnotherNumber(50, 100, .6));
 // 8. Find hours or days between two dates //Call
 console.log (looneyLibRun.amountOfHoursBetweenDates(new Date(2013, 3, 28), new Date(2013, 4, 1)));
 // 9. Return number from string //Call
 console.log (looneyLibRun.numberFromString("72"));
 //10. In Array find the smallest value greater than certain number //Call
-
+console.log(looneyLibRun.findSmallValueInArray([1,3,5,7,9,11,13,15,72], 70))
 //11. Find total of numbers in array even if some aren't numbers //Call
-
+console.log(looneyLibRun.sumOfArrayEvenWithNonNumbers([1,3,5,7,9,11,13,15,72, "cat", "dog"]));
 //12. Array of objects sort //Call
 //Array sorter call
 console.log (looneyLibRun.sortObjectsInArray([{p:3}, {p:1}, {p:5}, {p:4}, {p:2}], "p"));
+
+
+
+
+
+
+
+
 
 
 //Make-up
